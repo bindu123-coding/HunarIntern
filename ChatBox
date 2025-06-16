@@ -1,0 +1,26 @@
+import random
+def respond(user_input):
+    rules = {
+        "hi": ["Hello!", "Hi there!", "Hey! How are you?"],
+        "how are you": ["I'm good, thanks!", "Doing well, how about you?", "I'm fine, ready to chat!"],
+        "what's your name": ["I'm your simple chatbot!", "You can call me ChatBot!", "No name yet, but I love chatting!"],
+        "tell me a joke": ["Why did the tomato blush? Because it saw the salad dressing!", 
+                           "I would tell you a UDP joke, but you might not get it.", 
+                           "What do you call a fish wearing a bowtie? Sofishticated!"],
+        "weather": ["It's sunny today!", "Maybe rain later.", "Looks cloudy outside."],
+        "thank you": ["You're welcome!", "Anytime!", "No problem!"],
+        "bye": ["Goodbye!", "See you soon!", "Bye! Take care!"]
+    }
+    
+    for pattern, responses in rules.items():
+        if pattern in user_input:
+            return random.choice(responses)
+    
+    return "Sorry, I didn't understand that. Can you ask something else?"
+
+while True:
+    user_input = input("Me: ").lower()
+    response = respond(user_input)
+    print("ChatBot:", response)
+    if "bye" in user_input:
+        break
