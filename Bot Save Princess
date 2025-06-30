@@ -1,0 +1,38 @@
+def display_path_to_princess(n, grid):
+    # Bot is always in center of the grid
+    bot_x, bot_y = n // 2, n // 2
+    
+    # Find the princess position
+    for i in range(n):
+        for j in range(n):
+            if grid[i][j] == 'p':
+                princess_x, princess_y = i, j
+                break
+
+    # Calculate vertical moves
+    vertical_moves = princess_x - bot_x
+    if vertical_moves > 0:
+        for _ in range(vertical_moves):
+            print("DOWN")
+    elif vertical_moves < 0:
+        for _ in range(-vertical_moves):
+            print("UP")
+
+    # Calculate horizontal moves
+    horizontal_moves = princess_y - bot_y
+    if horizontal_moves > 0:
+        for _ in range(horizontal_moves):
+            print("RIGHT")
+    elif horizontal_moves < 0:
+        for _ in range(-horizontal_moves):
+            print("LEFT")
+
+# Sample Input
+n = 3
+grid = [
+    "---",
+    "-m-",
+    "p--"
+]
+
+display_path_to_princess(n, grid)
